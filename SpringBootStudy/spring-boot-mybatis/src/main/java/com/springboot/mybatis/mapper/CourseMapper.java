@@ -15,8 +15,22 @@ public interface CourseMapper {
             @Result(property = "courseCode", column = "course_code"),
             @Result(property = "finished", column = "finished")
     })
-    @Select("SELECT * FROM t_course ")
+    @Select("SELECT * FROM t_course where t_course.finished = 0")
     List<Course> selectAll();
+
+    //自定义的多表关联查询
+    @Results({@Result(column = "course_id", property = "courseId"),
+            @Result(column = "course_name", property = "courseName"),
+            @Result(column = "user_id", property = "userId"),
+            @Result(column = "course_class", property = "courseClass"),
+            @Result(column = "cover", property = "cover"),
+            @Result(column = "course_code", property = "courseCode"),
+            @Result(column = "finished", property = "finished")
+    })
+
+    @Select("SELECT * FROM t_course where t_course.finished = 1")
+    List<Course> selectAll1();
+
 
 
     @Results({
@@ -40,4 +54,6 @@ public interface CourseMapper {
 
     @Update("UPDATE t_course SET cover=#{cover},finished=#{finished} WHERE course_id =#{courseId}")
     void update(Course course);
+
+
 }

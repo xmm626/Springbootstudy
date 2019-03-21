@@ -1,18 +1,18 @@
 package com.springboot.mybatis.service.Impl;
 
-import com.springboot.mybatis.entity.Course;
-import com.springboot.mybatis.service.CourseService;
-import com.springboot.mybatis.util.RandomUtil;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+        import com.springboot.mybatis.entity.Course;
+        import com.springboot.mybatis.service.CourseService;
+        import com.springboot.mybatis.util.RandomUtil;
+        import org.junit.Test;
+        import org.junit.runner.RunWith;
+        import org.springframework.boot.test.context.SpringBootTest;
+        import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
+        import javax.annotation.Resource;
 
-import java.util.List;
+        import java.util.List;
 
-import static org.junit.Assert.*;
+        import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -23,6 +23,11 @@ public class CourseServiceImplTest {
     @Test
     public void selectAll() {
         List<Course> courseList = courseService.selectAll();
+        courseList.forEach(course -> System.out.println(course));
+    }
+    @Test
+    public void selectAll1() {
+        List<Course> courseList = courseService.selectAll1();
         courseList.forEach(course -> System.out.println(course));
     }
 

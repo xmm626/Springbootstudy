@@ -19,6 +19,12 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> selectAll1() {
+        return courseMapper.selectAll1();
+    }
+
+
+    @Override
     public Course getOne(long courseId) {
         return courseMapper.getOne(courseId);
     }

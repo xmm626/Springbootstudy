@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api")
+@CrossOrigin("http://localhost:80")
 public class CourseController {
     @Resource
     private CourseService courseService;
@@ -24,13 +25,19 @@ public class CourseController {
         return courseService.selectAll();
     }
 
+
+    @RequestMapping(value = "/courses1", method = RequestMethod.GET)
+    public List<Course> selectAll1() {
+        return courseService.selectAll1();
+    }
+
     /**
      * 根据id查询班课
      *
      * @param id
      * @return
      */
-    @RequestMapping(value = "/courses/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/course/{id}", method = RequestMethod.GET)
     public Course getOne(@PathVariable("id") long id) {
         return courseService.getOne(id);
     }
@@ -40,7 +47,7 @@ public class CourseController {
      *
      * @param id
      */
-    @RequestMapping(value = "/courses/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/course/{id}", method = RequestMethod.DELETE)
     public void deleteCourse(@PathVariable("id") long id) {
         courseService.delete(id);
     }
@@ -50,7 +57,7 @@ public class CourseController {
      *
      * @param course
      */
-    @RequestMapping(value = "/courses", method = RequestMethod.POST)
+    @RequestMapping(value = "/course", method = RequestMethod.POST)
     public void addCourse(@RequestBody Course course) {
         course.setCourseCode(RandomUtil.getRandomCode());
         courseService.insert(course);
